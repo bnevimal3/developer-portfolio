@@ -25,7 +25,7 @@ const Portfolio: React.FC = () => {
   ];
 
   return (
-    <section id="portfolio" className="py-32 px-6 bg-black">
+    <section id="portfolio" className="py-20 md:py-32 px-6 bg-black">
       <div className="max-w-7xl mx-auto">
         <div className="mb-24 text-center md:text-left">
           <h2 className="text-[11px] uppercase tracking-[0.6em] text-[#D4AF37] mb-6 font-bold">Curated Case Studies</h2>

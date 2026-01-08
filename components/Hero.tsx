@@ -114,15 +114,15 @@ const Hero: React.FC = () => {
         </h1>
         
         {/* Sub-heading - Stylized to match name */}
-        <h2 className="text-5xl md:text-8xl font-bold tracking-tighter mb-10 leading-tight font-display text-gold-premium animate-reveal" style={{ animationDelay: '0.4s' }}>
+        <h2 className="text-3xl md:text-8xl font-bold tracking-tighter mb-10 leading-tight font-display text-gold-premium animate-reveal" style={{ animationDelay: '0.4s' }}>
           Software Developer
         </h2>
         
         {/* Rotating Cards System Around Profile */}
-        <div className="relative w-[450px] h-[450px] md:w-[600px] md:h-[600px] flex items-center justify-center mb-16 animate-reveal" style={{ animationDelay: '0.6s' }}>
+        <div className="relative w-[300px] h-[300px] md:w-[600px] md:h-[600px] flex items-center justify-center mb-16 animate-reveal" style={{ animationDelay: '0.6s' }}>
           
           {/* Central Logo - Replacing the Profile Picture/NB with the custom Logo design */}
-          <div className="relative z-20 w-44 h-44 md:w-64 md:h-64 flex items-center justify-center group">
+          <div className="relative z-20 w-32 h-32 md:w-64 md:h-64 flex items-center justify-center group">
             {/* Outer Rings */}
             <div className="absolute inset-0 rounded-full border border-[#D4AF37]/40 p-1 bg-black overflow-hidden shadow-[0_0_60px_rgba(212,175,55,0.2)]">
                 <div className="w-full h-full rounded-full border border-[#D4AF37]/10 bg-zinc-950 flex items-center justify-center relative">
@@ -171,7 +171,7 @@ const Hero: React.FC = () => {
           </div>
 
           {/* Background Orbit Ring */}
-          <div className="absolute w-[440px] h-[440px] md:w-[540px] md:h-[540px] border border-[#D4AF37]/10 rounded-full" />
+          <div className="absolute w-[290px] h-[290px] md:w-[540px] md:h-[540px] border border-[#D4AF37]/10 rounded-full" />
 
           {/* Rotating Orbit Cards */}
           {cards.map((card, idx) => (

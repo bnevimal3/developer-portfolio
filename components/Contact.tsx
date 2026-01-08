@@ -3,7 +3,7 @@ import React from 'react';
 
 const Contact: React.FC = () => {
   return (
-    <section id="contact" className="py-32 px-6 bg-black border-b border-[#D4AF37]/10">
+    <section id="contact" className="py-20 md:py-32 px-6 bg-black border-b border-[#D4AF37]/10">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-24 flex flex-col items-center">
           <div className="mb-6 px-4 py-1.5 rounded-full border border-[#D4AF37]/20 bg-black/40 backdrop-blur-md flex items-center gap-2 animate-reveal" style={{ animationDelay: '0.1s' }}>

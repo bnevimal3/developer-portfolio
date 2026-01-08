@@ -21,7 +21,7 @@ const Services: React.FC = () => {
   ];
 
   return (
-    <section id="services" className="py-32 px-6 bg-black border-y border-[#D4AF37]/10">
+    <section id="services" className="py-20 md:py-32 px-6 bg-black border-y border-[#D4AF37]/10">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-24">
           <div>

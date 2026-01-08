@@ -86,6 +86,7 @@ const Icons = {
 const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [hoverTimeout, setHoverTimeout] = useState<ReturnType<typeof setTimeout> | null>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navData: NavItem[] = [
     {
@@ -189,13 +190,30 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
       `}</style>
 
       {/* Reduced horizontal padding to move logo further left */}
-      <div className="max-w-7xl mx-auto px-2 md:px-4 flex items-center justify-between relative">
-        <div className="flex items-center gap-2 group cursor-pointer" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
+      <div className="max-w-7xl mx-auto px-4 md:px-4 flex items-center justify-between relative">
+        <div className="flex items-center gap-2 group cursor-pointer z-[110]" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
           <span className="text-xl md:text-2xl font-bold tracking-tighter text-gold-gradient font-display uppercase italic transition-transform duration-500 group-hover:scale-105">
             NANDA ESWAR
           </span>
         </div>
 
+        {/* Mobile Menu Toggle */}
+        <button 
+          className="lg:hidden text-white z-[110] p-2"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          {isMobileMenuOpen ? (
+            <svg className="w-6 h-6 text-[#D4AF37]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          ) : (
+             <svg className="w-6 h-6 text-[#D4AF37]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          )}
+        </button>
+
+        {/* Desktop Menu */}
         <div className="hidden lg:flex items-center gap-8 text-[9px] font-black uppercase tracking-[0.25em] text-gray-500">
           {navData.map((link) => (
             <div 
@@ -209,6 +227,35 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
               >
                 {link.name}
               </a>
+            </div>
+          ))}
+        </div>
+
+        {/* Mobile Menu Overlay */}
+        <div className={`fixed inset-0 bg-black/95 backdrop-blur-3xl z-[100] transition-all duration-500 lg:hidden flex flex-col pt-24 px-6 overflow-y-auto ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+          {navData.map((category) => (
+            <div key={category.name} className="mb-8">
+              <h3 className="text-[#D4AF37] text-xs font-black uppercase tracking-[0.2em] mb-4 border-b border-[#D4AF37]/20 pb-2">
+                {category.name}
+              </h3>
+              <div className="grid grid-cols-1 gap-3">
+                {category.items.map((item) => (
+                  <a 
+                    key={item.title}
+                    href={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    target={item.href.startsWith('http') ? "_blank" : undefined}
+                    rel={item.href.startsWith('http') ? "noopener noreferrer" : undefined}
+                    className="flex items-center gap-3 p-3 rounded-lg bg-white/5 hover:bg-[#D4AF37]/10 border border-transparent hover:border-[#D4AF37]/30 transition-all"
+                  >
+                    <div className="text-[#D4AF37] opacity-80">{item.icon}</div>
+                    <div>
+                      <div className="text-white text-sm font-bold">{item.title}</div>
+                      <div className="text-gray-500 text-[10px]">{item.desc}</div>
+                    </div>
+                  </a>
+                ))}
+              </div>
             </div>
           ))}
         </div>
